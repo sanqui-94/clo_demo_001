@@ -9,7 +9,8 @@ define('APP_ENV', getenv('APP_ENV') ?: 'development');
 // Set to the clinic's local timezone, e.g. 'Europe/Madrid'.
 define('APP_TIMEZONE', 'UTC');
 
-define('DB_PATH', __DIR__ . '/../database/clinic.sqlite');
+// Override with the DB_PATH environment variable, e.g. to point tests at a throwaway database.
+define('DB_PATH', getenv('DB_PATH') ?: __DIR__ . '/../database/clinic.sqlite');
 
 // Username of the admin account created by database/init.php.
 // Its password is generated randomly and printed once when init.php runs.

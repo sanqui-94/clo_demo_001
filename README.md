@@ -80,3 +80,12 @@ Set the `APP_ENV` environment variable to `production` on the server to hide PHP
 ## Configuration
 
 Settings live in `includes/config.php`: app name, timezone, database path, the admin username used by `init.php`, and `SESSION_TIMEOUT` (admins are logged out after 30 minutes of inactivity).
+
+Environment variables:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `APP_ENV` | `development` | Set to `production` on the server to hide PHP errors from visitors |
+| `DB_PATH` | `database/clinic.sqlite` | Use a different database file, e.g. a throwaway one for testing: `DB_PATH=/tmp/test.sqlite php database/init.php` |
+
+If the database file is missing or empty, pages fail with "Database not found … Run: php database/init.php" instead of creating an empty file.
