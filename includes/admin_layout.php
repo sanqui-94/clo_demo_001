@@ -31,6 +31,9 @@ function admin_header(string $title): void
         </div>
     </header>
     <main class="container">
+<?php if (is_logged_in() && basename($_SERVER['SCRIPT_NAME']) !== 'index.php'): ?>
+        <p class="back-link"><a href="index.php">← <?= e(t('admin.back_to_dashboard')) ?></a></p>
+<?php endif; ?>
 <?php foreach (take_flashes() as $flash): ?>
         <div class="alert alert-<?= e($flash['type']) ?>" role="status"><?= e($flash['message']) ?></div>
 <?php endforeach; ?>
@@ -44,4 +47,33 @@ function admin_footer(): void
 </body>
 </html>
 <?php
+}
+
+/**
+ * The validation message for one form field, or '' if it has none.
+ * $errors maps field names to messages.
+ */
+function field_error(array $errors, string $field): string
+{
+    if (!isset($errors[$field])) {
+        return '';
+    }
+
+    return '<p class="field-error" id="' . e($field) . '-error">' . e($errors[$field]) . '</p>';
+}
+
+/**
+ * aria attributes for an input, so screen readers announce its error.
+ */
+function field_error_attrs(array $errors, string $field): string
+{
+    return isset($errors[$field]) ? ' aria-invalid="true" aria-describedby="' . e($field) . '-error"' : '';
+}
+
+/**
+ * The alert shown above a form that failed validation.
+ */
+function form_errors_alert(array $errors): string
+{
+    return $errors ? '<div class="alert alert-error" role="alert">' . e(t('admin.fix_errors')) . '</div>' : '';
 }

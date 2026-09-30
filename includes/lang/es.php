@@ -11,6 +11,10 @@ return [
     'admin.title_suffix' => 'Administración',
     'admin.logged_in_as' => 'Sesión iniciada como',
     'admin.logout' => 'Cerrar sesión',
+    'admin.back_to_dashboard' => 'Volver al panel',
+    'admin.save' => 'Guardar cambios',
+    'admin.required_hint' => 'Campo obligatorio',
+    'admin.fix_errors' => 'Revisa los campos marcados.',
     'admin.invalid_form' => 'El formulario no es válido. Vuelve atrás, recarga la página e inténtalo de nuevo.',
 
     // Admin: login and session
@@ -35,4 +39,15 @@ return [
     'dashboard.schedules_desc' => 'Define la disponibilidad semanal de cada médico.',
     'dashboard.settings' => 'Ajustes',
     'dashboard.settings_desc' => 'Cambia tu contraseña.',
+
+    // Admin: clinic info
+    'clinic.title' => 'Información de la clínica',
+    'clinic.name' => 'Nombre',
+    'clinic.description' => 'Descripción',
+    'clinic.phone' => 'Teléfono',
+    'clinic.email' => 'Correo electrónico',
+    'clinic.address' => 'Dirección',
+    'clinic.name_required' => 'Introduce el nombre de la clínica.',
+    'clinic.email_invalid' => 'Introduce un correo electrónico válido, p. ej. info@clinica.es.',
+    'clinic.saved' => 'Información de la clínica guardada.',
 ];
