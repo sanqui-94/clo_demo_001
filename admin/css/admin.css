@@ -82,6 +82,7 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"],
+input[type="tel"],
 textarea,
 select {
     width: 100%;
@@ -127,6 +128,43 @@ button:hover {
 .button-link:hover {
     background: none;
     color: var(--primary-dark);
+}
+
+.form-card {
+    max-width: 640px;
+    padding: 0.5rem 1.5rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+[aria-invalid="true"] {
+    border-color: var(--error-text);
+}
+
+.field-error {
+    margin: 0.25rem 0 0;
+    color: var(--error-text);
+    font-size: 0.9rem;
+}
+
+.required {
+    color: var(--error-text);
+}
+
+.form-hint {
+    margin: 1rem 0 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.back-link {
+    margin: 0 0 1rem;
+    font-size: 0.9rem;
 }
 
 /* Messages */

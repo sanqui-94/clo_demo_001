@@ -11,6 +11,10 @@ return [
     'admin.title_suffix' => 'Admin',
     'admin.logged_in_as' => 'Logged in as',
     'admin.logout' => 'Log out',
+    'admin.back_to_dashboard' => 'Back to dashboard',
+    'admin.save' => 'Save changes',
+    'admin.required_hint' => 'Required field',
+    'admin.fix_errors' => 'Please fix the highlighted fields.',
     'admin.invalid_form' => 'Invalid form submission. Go back, reload the page, and try again.',
 
     // Admin: login and session
@@ -35,4 +39,15 @@ return [
     'dashboard.schedules_desc' => 'Set each doctor\'s weekly availability.',
     'dashboard.settings' => 'Settings',
     'dashboard.settings_desc' => 'Change your password.',
+
+    // Admin: clinic info
+    'clinic.title' => 'Clinic info',
+    'clinic.name' => 'Name',
+    'clinic.description' => 'Description',
+    'clinic.phone' => 'Phone',
+    'clinic.email' => 'Email',
+    'clinic.address' => 'Address',
+    'clinic.name_required' => 'Enter the clinic name.',
+    'clinic.email_invalid' => 'Enter a valid email address, e.g. info@clinic.com.',
+    'clinic.saved' => 'Clinic info saved.',
 ];
