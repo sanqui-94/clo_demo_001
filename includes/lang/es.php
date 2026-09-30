@@ -186,4 +186,11 @@ return [
     'home.email' => 'Correo electrónico',
     'home.address' => 'Dirección',
     'home.directions' => 'Cómo llegar',
+
+    // Public site: staff
+    'staff.title' => 'Equipo médico',
+    'staff.intro' => 'Conoce a los profesionales que te atenderán.',
+    'staff.meta_description' => 'Conoce al equipo médico de {name}: especialidades, experiencia y horarios de consulta.',
+    'staff.empty' => 'Pronto presentaremos aquí a nuestro equipo.',
+    'staff.view_profile' => 'Ver perfil',
 ];

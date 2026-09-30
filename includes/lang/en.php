@@ -186,4 +186,11 @@ return [
     'home.email' => 'Email',
     'home.address' => 'Address',
     'home.directions' => 'Get directions',
+
+    // Public site: staff
+    'staff.title' => 'Our doctors',
+    'staff.intro' => 'Meet the professionals who will look after you.',
+    'staff.meta_description' => 'Meet the doctors at {name}: their specialties, experience and consultation hours.',
+    'staff.empty' => 'Our team will be introduced here soon.',
+    'staff.view_profile' => 'View profile',
 ];
