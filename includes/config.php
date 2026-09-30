@@ -4,7 +4,8 @@
 define('APP_NAME', 'Clinic Demo');
 
 // 'development' shows PHP errors in the browser; 'production' hides them.
-define('APP_ENV', getenv('APP_ENV') ?: 'development');
+// In production the root .htaccess sets it with SetEnv, which some servers expose only in $_SERVER, not getenv().
+define('APP_ENV', getenv('APP_ENV') ?: ($_SERVER['APP_ENV'] ?? 'development'));
 
 // Interface languages. The first visit uses DEFAULT_LANG; visitors can switch with the ES | EN links.
 define('SUPPORTED_LANGS', ['es', 'en']);

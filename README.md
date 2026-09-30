@@ -56,16 +56,71 @@ Always include `router.php`. It makes the built-in server behave like the produc
 
 ## Deploy to Hostinger
 
-1. Upload the project files (File Manager, FTP, or `git clone` over SSH).
-2. Create the database, using **one** of these:
-   - **With SSH** (available on most Hostinger web hosting plans): connect, `cd` into the project folder, and run `php database/init.php`. Save the printed password.
-   - **Without SSH:** run `php database/init.php` on your own computer, save the printed password, then upload `database/clinic.sqlite` into the `database/` folder on the server.
-3. Make sure the web server can write to the `database/` folder (permissions `755`), not just the `.sqlite` file. SQLite creates temporary files next to the database while saving changes. Doctor photos are saved in `public/images/doctors/`, so that folder must be writable too.
-4. Check the private folders are blocked: open `https://your-site/database/clinic.sqlite` and `https://your-site/includes/config.php`. Both must return **403 Forbidden**, not a download or a page.
+The whole project goes into the site's `public_html` folder. The root `.htaccess` then:
 
-`includes/` and `database/` must never be reachable from the web. Each has an `.htaccess` that denies access. If the host allows it, keep the project outside `public_html` and serve only `public/` and `admin/`.
+- sends the bare domain to the homepage in `public/`
+- blocks `.git/`, `README.md` and `router.php` (404); `includes/` and `database/` have their own `.htaccess` (403)
+- turns off folder listings
+- sets `APP_ENV=production`, which hides PHP errors from visitors
 
-Set the `APP_ENV` environment variable to `production` on the server to hide PHP errors from visitors.
+URLs: `https://your-domain/` (redirects to `/public/`) and `https://your-domain/admin/`.
+
+### 1. Prepare the hosting (hPanel)
+
+1. **PHP version:** Advanced → PHP Configuration → choose PHP **8.1 or newer** (8.3 recommended).
+2. **Extensions:** in the same screen, under PHP Extensions, check `pdo_sqlite` is enabled.
+3. **HTTPS:** Security → SSL → install the free certificate, and turn on "Force HTTPS". The admin login cookie is only sent over HTTPS once it's on.
+4. **Empty `public_html`:** in File Manager, delete Hostinger's placeholder files (e.g. `default.php`). The Git deploy needs an empty folder.
+
+### 2. Upload the code
+
+**With Git (recommended, updates are one click):** Advanced → Git → Create a new repository:
+
+- Repository: `https://github.com/sanqui-94/clo_demo_001.git`
+- Branch: `main`
+- Directory: leave empty (deploys into `public_html`)
+
+Then press **Deploy**. To update the site later, merge to `main` and press Deploy again. The database and uploaded photos are not in git, so deploys don't touch them.
+
+**Without Git:** upload the project files into `public_html` with File Manager or FTP, keeping the folder structure. Include the hidden `.htaccess` files (root, `includes/`, `database/`).
+
+### 3. Create the database
+
+**With SSH** (Advanced → SSH Access → enable; it shows the command, usually `ssh -p 65002 u123456789@your-server-ip`):
+
+```sh
+cd domains/your-domain/public_html
+php -v                     # must be 8.1+; if not, use the full path, e.g. /opt/alt/php83/usr/bin/php
+php database/init.php      # prints the admin password once: save it
+```
+
+**Without SSH:** run `DB_PATH=/tmp/clinic.sqlite php database/init.php` on your own computer, save the printed password, and upload `/tmp/clinic.sqlite` as `public_html/database/clinic.sqlite`. Don't upload your local development database unless you want its content live.
+
+### 4. Permissions
+
+Folders `755`, files `644` (Hostinger's defaults). PHP runs as your hosting user, so it can write to:
+
+- `database/` (the folder, not only the `.sqlite` file: SQLite creates temporary files next to it while saving)
+- `public/images/doctors/` (uploaded photos)
+
+### 5. Check the deploy
+
+| Open | Expected |
+|---|---|
+| `https://your-domain/` | Redirects to `/public/` and shows the homepage |
+| `https://your-domain/admin/` | Login page; the password from step 3 works |
+| `https://your-domain/database/clinic.sqlite` | **403** (never a download) |
+| `https://your-domain/includes/config.php` | **403** |
+| `https://your-domain/.git/config` | **404** |
+| `https://your-domain/public/images/doctors/` | **403** (no file list) |
+
+Then upload a doctor photo in the admin and check it shows on the staff page. That proves both writable folders work.
+
+To confirm PHP errors are hidden, create `public_html/public/env-check.php` containing `<?php require __DIR__ . '/../includes/config.php'; var_dump(APP_ENV);`, open it (it must print `string(10) "production"`), then **delete it**.
+
+### Backups
+
+Everything the admin enters lives in `database/clinic.sqlite` and `public/images/doctors/`. Download both before risky changes; Hostinger's own backups (Files → Backups) also include them.
 
 ## Languages
 
