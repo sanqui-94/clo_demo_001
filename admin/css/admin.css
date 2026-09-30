@@ -167,6 +167,87 @@ textarea {
     font-size: 0.9rem;
 }
 
+.form-card h2 {
+    margin: 1rem 0 0;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+/* Lists */
+
+h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.2rem;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table .is-editing {
+    background: #eef6f9;
+}
+
+.muted,
+.empty {
+    color: var(--muted);
+}
+
+.row-actions {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.row-actions > * {
+    margin-left: 1rem;
+}
+
+.row-actions form {
+    display: inline;
+}
+
+.button-link.danger {
+    color: var(--error-text);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
 /* Messages */
 
 .alert {

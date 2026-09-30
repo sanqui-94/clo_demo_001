@@ -14,6 +14,10 @@ return [
     'admin.back_to_dashboard' => 'Volver al panel',
     'admin.save' => 'Guardar cambios',
     'admin.required_hint' => 'Campo obligatorio',
+    'admin.cancel' => 'Cancelar',
+    'admin.edit' => 'Editar',
+    'admin.delete' => 'Eliminar',
+    'admin.actions' => 'Acciones',
     'admin.fix_errors' => 'Revisa los campos marcados.',
     'admin.invalid_form' => 'El formulario no es válido. Vuelve atrás, recarga la página e inténtalo de nuevo.',
 
@@ -50,4 +54,20 @@ return [
     'clinic.name_required' => 'Introduce el nombre de la clínica.',
     'clinic.email_invalid' => 'Introduce un correo electrónico válido, p. ej. info@clinica.es.',
     'clinic.saved' => 'Información de la clínica guardada.',
+
+    // Admin: services
+    'services.title' => 'Servicios',
+    'services.add_heading' => 'Añadir servicio',
+    'services.edit_heading' => 'Editar servicio',
+    'services.list_heading' => 'Servicios actuales',
+    'services.name' => 'Nombre',
+    'services.description' => 'Descripción',
+    'services.add' => 'Añadir servicio',
+    'services.empty' => 'Todavía no hay servicios. Añade el primero con el formulario de arriba.',
+    'services.name_required' => 'Introduce el nombre del servicio.',
+    'services.added' => 'Servicio añadido.',
+    'services.updated' => 'Servicio actualizado.',
+    'services.deleted' => 'Servicio eliminado.',
+    'services.not_found' => 'Ese servicio no existe o ya se ha eliminado.',
+    'services.confirm_delete' => '¿Eliminar el servicio «{name}»? No se puede deshacer.',
 ];
