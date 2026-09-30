@@ -88,7 +88,7 @@ The default language is `DEFAULT_LANG` in `includes/config.php`.
 |---|---|
 | `public/` | Public pages, `css/`, and uploaded doctor photos in `images/doctors/` |
 | `admin/` | Admin panel pages and `css/` |
-| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php`, `photos.php` (doctor photo uploads), `i18n.php` and `lang/` (translations) |
+| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php`, `public_layout.php` (public site header, footer and clinic details), `schedules.php` (doctor schedules), `photos.php` (doctor photo uploads), `i18n.php` and `lang/` (translations) |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
 | `router.php` | Local development router for `php -S` (not used in production) |
 

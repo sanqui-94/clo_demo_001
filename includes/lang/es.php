@@ -166,4 +166,24 @@ return [
     'settings.same_as_current' => 'La nueva contraseña debe ser distinta de la actual.',
     'settings.mismatch' => 'Las contraseñas no coinciden.',
     'settings.changed' => 'Contraseña cambiada. Úsala la próxima vez que inicies sesión.',
+
+    // Public site: shared
+    'site.skip_link' => 'Saltar al contenido',
+    'site.nav_label' => 'Menú principal',
+    'site.new_tab' => '(se abre en una pestaña nueva)',
+    'site.copyright' => '© {year} {name}',
+    'nav.home' => 'Inicio',
+    'nav.staff' => 'Equipo médico',
+
+    // Public site: homepage
+    'home.coming_soon' => 'Estamos preparando nuestra web. Vuelve pronto.',
+    'home.meet_team' => 'Conoce a nuestro equipo',
+    'home.call' => 'Llamar al {phone}',
+    'home.services' => 'Nuestros servicios',
+    'home.services_empty' => 'Pronto publicaremos aquí nuestros servicios.',
+    'home.contact' => 'Contacto',
+    'home.phone' => 'Teléfono',
+    'home.email' => 'Correo electrónico',
+    'home.address' => 'Dirección',
+    'home.directions' => 'Cómo llegar',
 ];
