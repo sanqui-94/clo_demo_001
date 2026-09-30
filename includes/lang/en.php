@@ -166,4 +166,24 @@ return [
     'settings.same_as_current' => 'The new password must be different from the current one.',
     'settings.mismatch' => 'The passwords don\'t match.',
     'settings.changed' => 'Password changed. Use it next time you log in.',
+
+    // Public site: shared
+    'site.skip_link' => 'Skip to content',
+    'site.nav_label' => 'Main menu',
+    'site.new_tab' => '(opens in a new tab)',
+    'site.copyright' => '© {year} {name}',
+    'nav.home' => 'Home',
+    'nav.staff' => 'Our doctors',
+
+    // Public site: homepage
+    'home.coming_soon' => 'Our website is on its way. Please check back soon.',
+    'home.meet_team' => 'Meet our doctors',
+    'home.call' => 'Call {phone}',
+    'home.services' => 'Our services',
+    'home.services_empty' => 'Our services will be listed here soon.',
+    'home.contact' => 'Contact',
+    'home.phone' => 'Phone',
+    'home.email' => 'Email',
+    'home.address' => 'Address',
+    'home.directions' => 'Get directions',
 ];

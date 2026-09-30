@@ -39,3 +39,29 @@ function take_flashes(): array
 
     return $messages;
 }
+
+/**
+ * Plain text typed in the admin as HTML paragraphs: blank lines start a new paragraph, single line breaks are kept.
+ */
+function text_paragraphs(?string $text): string
+{
+    $paragraphs = preg_split('/\R\s*\R/', trim($text ?? ''), -1, PREG_SPLIT_NO_EMPTY);
+
+    return implode("\n", array_map(fn(string $p) => '<p>' . nl2br(e(trim($p)), false) . '</p>', $paragraphs));
+}
+
+/**
+ * The start of a text, cut at a word boundary and ending in '…' if shortened. Line breaks become spaces.
+ */
+function excerpt(?string $text, int $maxLength): string
+{
+    $text = trim(preg_replace('/\s+/u', ' ', $text ?? ''));
+    if (mb_strlen($text) <= $maxLength) {
+        return $text;
+    }
+
+    $cut = mb_substr($text, 0, $maxLength);
+    $lastSpace = mb_strrpos($cut, ' ');
+
+    return rtrim($lastSpace ? mb_substr($cut, 0, $lastSpace) : $cut, " ,.;:") . '…';
+}
