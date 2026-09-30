@@ -11,9 +11,9 @@ define('APP_TIMEZONE', 'UTC');
 
 define('DB_PATH', __DIR__ . '/../database/clinic.sqlite');
 
-// Default admin account created by database/init.php. Change it after first login.
+// Username of the admin account created by database/init.php.
+// Its password is generated randomly and printed once when init.php runs.
 define('DEFAULT_ADMIN_USERNAME', 'admin');
-define('DEFAULT_ADMIN_PASSWORD', 'changeme');
 
 date_default_timezone_set(APP_TIMEZONE);
 
