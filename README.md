@@ -38,12 +38,21 @@ php database/init.php
 
 ## Run locally
 
+From the project root, start PHP's built-in server **with `router.php`**:
+
 ```sh
-php -S localhost:8000
+php -S localhost:8000 router.php
 ```
 
-- Public site: http://localhost:8000/public/
-- Admin panel: http://localhost:8000/admin/
+- Public site: http://localhost:8000/public
+- Admin panel: http://localhost:8000/admin
+
+Always include `router.php`. It makes the built-in server behave like the production server:
+
+- Folder URLs without a trailing slash (`/admin`) redirect to `/admin/`. Without the router, the page's links and redirects break and you get a 404.
+- `includes/` and `database/` are blocked (403), as their `.htaccess` files do in production.
+
+`router.php` is for local development only. Hostinger's web server never uses it, and if someone requests it directly there it returns 404.
 
 ## Deploy to Hostinger
 
@@ -64,9 +73,19 @@ Set the `APP_ENV` environment variable to `production` on the server to hide PHP
 |---|---|
 | `public/` | Public pages, `css/`, and uploaded doctor photos in `images/doctors/` |
 | `admin/` | Admin panel pages and `css/` |
-| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php` |
+| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php` |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
+| `router.php` | Local development router for `php -S` (not used in production) |
 
 ## Configuration
 
-Settings live in `includes/config.php`: app name, timezone, database path, and the admin username used by `init.php`.
+Settings live in `includes/config.php`: app name, timezone, database path, the admin username used by `init.php`, and `SESSION_TIMEOUT` (admins are logged out after 30 minutes of inactivity).
+
+Environment variables:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `APP_ENV` | `development` | Set to `production` on the server to hide PHP errors from visitors |
+| `DB_PATH` | `database/clinic.sqlite` | Use a different database file, e.g. a throwaway one for testing: `DB_PATH=/tmp/test.sqlite php database/init.php` |
+
+If the database file is missing or empty, pages fail with "Database not found … Run: php database/init.php" instead of creating an empty file.

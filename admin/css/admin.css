@@ -1,0 +1,201 @@
+:root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --text: #1f2933;
+    --muted: #616e7c;
+    --border: #d9dee3;
+    --primary: #1f6f8b;
+    --primary-dark: #185a71;
+    --success-bg: #e3f6ea;
+    --success-text: #1d6b3a;
+    --error-bg: #fdecec;
+    --error-text: #a12a2a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+}
+
+a {
+    color: var(--primary);
+}
+
+h1 {
+    margin: 0 0 1.5rem;
+    font-size: 1.6rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Top bar */
+
+.topbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.topbar-user {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.topbar-user form {
+    margin: 0;
+}
+
+/* Forms */
+
+label {
+    display: block;
+    margin: 1rem 0 0.25rem;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font: inherit;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+button {
+    margin-top: 1.25rem;
+    padding: 0.6rem 1.25rem;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+.button-link {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    color: var(--primary);
+    background: none;
+    text-decoration: underline;
+}
+
+.button-link:hover {
+    background: none;
+    color: var(--primary-dark);
+}
+
+/* Messages */
+
+.alert {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+}
+
+.alert-success {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.alert-error {
+    background: var(--error-bg);
+    color: var(--error-text);
+}
+
+/* Login */
+
+.login-box {
+    max-width: 380px;
+    margin: 4rem auto 0;
+    padding: 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.login-box h1 {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.login-box button {
+    width: 100%;
+}
+
+/* Dashboard */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    height: 100%;
+    padding: 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.card:hover {
+    border-color: var(--primary);
+}
+
+.card span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
