@@ -105,4 +105,19 @@ return [
     'photo.invalid_type' => 'El archivo no es una imagen válida. Sube una foto JPG, PNG o WebP.',
     'photo.upload_failed' => 'No se ha podido subir la foto. Inténtalo de nuevo.',
     'photo.save_failed' => 'No se ha podido guardar la foto en el servidor. Comprueba que la carpeta public/images/doctors/ tiene permisos de escritura.',
+
+    // Admin: settings
+    'settings.title' => 'Ajustes',
+    'settings.password_heading' => 'Cambiar contraseña',
+    'settings.current' => 'Contraseña actual',
+    'settings.new' => 'Nueva contraseña',
+    'settings.new_hint' => 'Al menos {min} caracteres.',
+    'settings.confirm' => 'Repite la nueva contraseña',
+    'settings.submit' => 'Cambiar contraseña',
+    'settings.current_required' => 'Introduce tu contraseña actual.',
+    'settings.current_wrong' => 'La contraseña actual no es correcta.',
+    'settings.too_short' => 'La nueva contraseña debe tener al menos {min} caracteres.',
+    'settings.same_as_current' => 'La nueva contraseña debe ser distinta de la actual.',
+    'settings.mismatch' => 'Las contraseñas no coinciden.',
+    'settings.changed' => 'Contraseña cambiada. Úsala la próxima vez que inicies sesión.',
 ];

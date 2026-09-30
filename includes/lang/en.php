@@ -105,4 +105,19 @@ return [
     'photo.invalid_type' => 'The file isn\'t a valid image. Upload a JPG, PNG, or WebP photo.',
     'photo.upload_failed' => 'The photo couldn\'t be uploaded. Please try again.',
     'photo.save_failed' => 'The photo couldn\'t be saved on the server. Check that the public/images/doctors/ folder is writable.',
+
+    // Admin: settings
+    'settings.title' => 'Settings',
+    'settings.password_heading' => 'Change password',
+    'settings.current' => 'Current password',
+    'settings.new' => 'New password',
+    'settings.new_hint' => 'At least {min} characters.',
+    'settings.confirm' => 'Repeat new password',
+    'settings.submit' => 'Change password',
+    'settings.current_required' => 'Enter your current password.',
+    'settings.current_wrong' => 'Your current password is incorrect.',
+    'settings.too_short' => 'The new password must be at least {min} characters.',
+    'settings.same_as_current' => 'The new password must be different from the current one.',
+    'settings.mismatch' => 'The passwords don\'t match.',
+    'settings.changed' => 'Password changed. Use it next time you log in.',
 ];
