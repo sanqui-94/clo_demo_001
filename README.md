@@ -38,12 +38,21 @@ php database/init.php
 
 ## Run locally
 
+From the project root, start PHP's built-in server **with `router.php`**:
+
 ```sh
-php -S localhost:8000
+php -S localhost:8000 router.php
 ```
 
-- Public site: http://localhost:8000/public/
-- Admin panel: http://localhost:8000/admin/
+- Public site: http://localhost:8000/public
+- Admin panel: http://localhost:8000/admin
+
+Always include `router.php`. It makes the built-in server behave like the production server:
+
+- Folder URLs without a trailing slash (`/admin`) redirect to `/admin/`. Without the router, the page's links and redirects break and you get a 404.
+- `includes/` and `database/` are blocked (403), as their `.htaccess` files do in production.
+
+`router.php` is for local development only. Hostinger's web server never uses it, and if someone requests it directly there it returns 404.
 
 ## Deploy to Hostinger
 
@@ -66,6 +75,7 @@ Set the `APP_ENV` environment variable to `production` on the server to hide PHP
 | `admin/` | Admin panel pages and `css/` |
 | `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php` |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
+| `router.php` | Local development router for `php -S` (not used in production) |
 
 ## Configuration
 
