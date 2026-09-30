@@ -193,4 +193,18 @@ return [
     'staff.meta_description' => 'Meet the doctors at {name}: their specialties, experience and consultation hours.',
     'staff.empty' => 'Our team will be introduced here soon.',
     'staff.view_profile' => 'View profile',
+
+    // Public site: doctor page
+    'doctor.back' => 'Back to our doctors',
+    'doctor.schedule_heading' => 'Consultation hours',
+    'doctor.book' => 'Book an appointment',
+    'doctor.book_by_phone' => 'Appointments: {phone}',
+    'doctor.no_schedule' => 'Schedule not available.',
+    'doctor.no_schedule_hint' => 'Contact the clinic and we\'ll let you know when they\'re available.',
+    'doctor.contact' => 'Contact the clinic',
+    'doctor.mail_subject' => 'Question about {name}',
+    'doctor.meta_description' => '{name}\'s profile and consultation hours at {clinic}.',
+    'doctor.not_found_title' => 'Doctor not found',
+    'doctor.not_found' => 'This doctor doesn\'t exist or is no longer part of our team.',
+    'doctor.see_team' => 'See our doctors',
 ];

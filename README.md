@@ -102,5 +102,6 @@ Environment variables:
 |---|---|---|
 | `APP_ENV` | `development` | Set to `production` on the server to hide PHP errors from visitors |
 | `DB_PATH` | `database/clinic.sqlite` | Use a different database file, e.g. a throwaway one for testing: `DB_PATH=/tmp/test.sqlite php database/init.php` |
+| `BOOKING_URL` | *(empty)* | Online appointment system opened by the "Pedir cita" button on doctor pages. While empty, the button calls the clinic's phone (or emails it if there is no phone) |
 
 If the database file is missing or empty, pages fail with "Database not found … Run: php database/init.php" instead of creating an empty file.

@@ -193,4 +193,18 @@ return [
     'staff.meta_description' => 'Conoce al equipo médico de {name}: especialidades, experiencia y horarios de consulta.',
     'staff.empty' => 'Pronto presentaremos aquí a nuestro equipo.',
     'staff.view_profile' => 'Ver perfil',
+
+    // Public site: doctor page
+    'doctor.back' => 'Volver al equipo médico',
+    'doctor.schedule_heading' => 'Horario de consulta',
+    'doctor.book' => 'Pedir cita',
+    'doctor.book_by_phone' => 'Teléfono de citas: {phone}',
+    'doctor.no_schedule' => 'Horario no disponible.',
+    'doctor.no_schedule_hint' => 'Contacta con la clínica y te informaremos de su disponibilidad.',
+    'doctor.contact' => 'Contactar con la clínica',
+    'doctor.mail_subject' => 'Consulta sobre {name}',
+    'doctor.meta_description' => 'Perfil y horario de consulta de {name} en {clinic}.',
+    'doctor.not_found_title' => 'Médico no encontrado',
+    'doctor.not_found' => 'Este médico no existe o ya no forma parte de nuestro equipo.',
+    'doctor.see_team' => 'Ver el equipo médico',
 ];
