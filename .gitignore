@@ -1,0 +1,9 @@
+# Local SQLite database (recreate with: php database/init.php)
+database/*.sqlite
+database/*.sqlite-journal
+
+# Uploaded doctor photos
+public/images/doctors/*
+!public/images/doctors/.gitkeep
+
+.DS_Store
