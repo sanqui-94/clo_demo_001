@@ -64,9 +64,9 @@ Set the `APP_ENV` environment variable to `production` on the server to hide PHP
 |---|---|
 | `public/` | Public pages, `css/`, and uploaded doctor photos in `images/doctors/` |
 | `admin/` | Admin panel pages and `css/` |
-| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php` |
+| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php` |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
 
 ## Configuration
 
-Settings live in `includes/config.php`: app name, timezone, database path, and the admin username used by `init.php`.
+Settings live in `includes/config.php`: app name, timezone, database path, the admin username used by `init.php`, and `SESSION_TIMEOUT` (admins are logged out after 30 minutes of inactivity).

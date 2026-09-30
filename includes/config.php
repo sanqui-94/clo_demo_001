@@ -15,6 +15,9 @@ define('DB_PATH', __DIR__ . '/../database/clinic.sqlite');
 // Its password is generated randomly and printed once when init.php runs.
 define('DEFAULT_ADMIN_USERNAME', 'admin');
 
+// Admins are logged out after this many seconds without loading a page.
+define('SESSION_TIMEOUT', 30 * 60);
+
 date_default_timezone_set(APP_TIMEZONE);
 
 if (APP_ENV === 'development') {
