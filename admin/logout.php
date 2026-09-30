@@ -10,5 +10,5 @@ verify_csrf();
 logout();
 
 start_session();
-flash('success', 'You have been logged out.');
+flash('success', t('login.logged_out'));
 redirect('login.php');

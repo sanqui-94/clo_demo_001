@@ -5,16 +5,16 @@ require_once __DIR__ . '/../includes/admin_layout.php';
 require_login();
 
 $sections = [
-    ['clinic.php',    'Clinic info', 'Name, description, and contact details.'],
-    ['services.php',  'Services',    'Add, edit, and remove the services offered.'],
-    ['doctors.php',   'Doctors',     'Manage doctor profiles and photos.'],
-    ['schedules.php', 'Schedules',   'Set each doctor\'s weekly availability.'],
-    ['settings.php',  'Settings',    'Change your password.'],
+    ['clinic.php',    t('dashboard.clinic'),    t('dashboard.clinic_desc')],
+    ['services.php',  t('dashboard.services'),  t('dashboard.services_desc')],
+    ['doctors.php',   t('dashboard.doctors'),   t('dashboard.doctors_desc')],
+    ['schedules.php', t('dashboard.schedules'), t('dashboard.schedules_desc')],
+    ['settings.php',  t('dashboard.settings'),  t('dashboard.settings_desc')],
 ];
 
-admin_header('Dashboard');
+admin_header(t('dashboard.title'));
 ?>
-        <h1>Dashboard</h1>
+        <h1><?= e(t('dashboard.title')) ?></h1>
         <ul class="card-grid">
 <?php foreach ($sections as [$href, $label, $description]): ?>
             <li>

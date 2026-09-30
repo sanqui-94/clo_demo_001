@@ -199,3 +199,14 @@ button:hover {
     color: var(--muted);
     font-size: 0.9rem;
 }
+
+/* Language switch */
+
+.lang-switch {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.lang-switch strong {
+    color: var(--text);
+}

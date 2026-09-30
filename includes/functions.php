@@ -1,6 +1,8 @@
 <?php
 // Small helpers shared by admin and public pages.
 
+require_once __DIR__ . '/i18n.php';
+
 /**
  * Escapes a value for safe output in HTML.
  */

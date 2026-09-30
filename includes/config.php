@@ -6,6 +6,10 @@ define('APP_NAME', 'Clinic Demo');
 // 'development' shows PHP errors in the browser; 'production' hides them.
 define('APP_ENV', getenv('APP_ENV') ?: 'development');
 
+// Interface languages. The first visit uses DEFAULT_LANG; visitors can switch with the ES | EN links.
+define('SUPPORTED_LANGS', ['es', 'en']);
+define('DEFAULT_LANG', 'es');
+
 // Set to the clinic's local timezone, e.g. 'Europe/Madrid'.
 define('APP_TIMEZONE', 'UTC');
 
