@@ -16,18 +16,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     if ($username === '' || $password === '') {
-        $error = 'Enter your username and password.';
+        $error = t('login.missing_fields');
     } elseif (attempt_login($username, $password)) {
         redirect('index.php');
     } else {
-        $error = 'Incorrect username or password.';
+        $error = t('login.failed');
     }
 }
 
-admin_header('Log in');
+admin_header(t('login.title'));
 ?>
         <div class="login-box">
-            <h1><?= e(APP_NAME) ?> Admin</h1>
+            <h1><?= e(APP_NAME) ?> <?= e(t('admin.title_suffix')) ?></h1>
 
 <?php if ($error): ?>
             <div class="alert alert-error" role="alert"><?= e($error) ?></div>
@@ -35,13 +35,13 @@ admin_header('Log in');
 
             <form method="post" action="login.php">
                 <?= csrf_field() ?>
-                <label for="username">Username</label>
+                <label for="username"><?= e(t('login.username')) ?></label>
                 <input type="text" id="username" name="username" value="<?= e($username) ?>" autocomplete="username" required autofocus>
 
-                <label for="password">Password</label>
+                <label for="password"><?= e(t('login.password')) ?></label>
                 <input type="password" id="password" name="password" autocomplete="current-password" required>
 
-                <button type="submit">Log in</button>
+                <button type="submit"><?= e(t('login.submit')) ?></button>
             </form>
         </div>
 <?php

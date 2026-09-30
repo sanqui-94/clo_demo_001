@@ -72,7 +72,7 @@ function require_login(): void
     if (time() - ($_SESSION['last_activity'] ?? 0) > SESSION_TIMEOUT) {
         logout();
         start_session();
-        flash('error', 'Your session expired. Please log in again.');
+        flash('error', t('login.session_expired'));
         redirect('login.php');
     }
 
@@ -108,6 +108,6 @@ function verify_csrf(): void
 {
     if (!hash_equals(csrf_token(), $_POST['csrf_token'] ?? '')) {
         http_response_code(400);
-        exit('Invalid form submission. Go back, reload the page, and try again.');
+        exit(e(t('admin.invalid_form')));
     }
 }

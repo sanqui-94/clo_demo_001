@@ -67,13 +67,28 @@ Always include `router.php`. It makes the built-in server behave like the produc
 
 Set the `APP_ENV` environment variable to `production` on the server to hide PHP errors from visitors.
 
+## Languages
+
+The interface (buttons, labels, messages) is available in Spanish and English. Spanish is the default; the **ES | EN** links in the header switch language, and the choice is remembered in a cookie for a year.
+
+Content entered in the admin (clinic description, services, doctor bios) is not translated: it shows as written in both languages.
+
+Interface texts live in `includes/lang/es.php` and `includes/lang/en.php`. To add or change one:
+
+1. Add the same key to **both** files, e.g. `'services.add' => 'Añadir servicio'` and `'services.add' => 'Add service'`.
+2. Print it in a page with `<?= e(t('services.add')) ?>`. Placeholders work too: `t('welcome', ['name' => $name])` with `'welcome' => 'Hola, {name}'`.
+
+A key missing in English falls back to Spanish; a key missing in both shows the key itself, so it's easy to spot.
+
+The default language is `DEFAULT_LANG` in `includes/config.php`.
+
 ## Project layout
 
 | Folder | Contents |
 |---|---|
 | `public/` | Public pages, `css/`, and uploaded doctor photos in `images/doctors/` |
 | `admin/` | Admin panel pages and `css/` |
-| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php` |
+| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php`, `i18n.php` and `lang/` (translations) |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
 | `router.php` | Local development router for `php -S` (not used in production) |
 
