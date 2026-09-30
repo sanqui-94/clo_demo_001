@@ -44,6 +44,15 @@ function admin_footer(): void
 {
     ?>
     </main>
+    <script>
+        // Forms with data-confirm="…" ask before submitting, e.g. delete buttons.
+        document.addEventListener('submit', function (event) {
+            var message = event.target.getAttribute('data-confirm');
+            if (message && !window.confirm(message)) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>
 <?php

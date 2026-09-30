@@ -14,6 +14,10 @@ return [
     'admin.back_to_dashboard' => 'Back to dashboard',
     'admin.save' => 'Save changes',
     'admin.required_hint' => 'Required field',
+    'admin.cancel' => 'Cancel',
+    'admin.edit' => 'Edit',
+    'admin.delete' => 'Delete',
+    'admin.actions' => 'Actions',
     'admin.fix_errors' => 'Please fix the highlighted fields.',
     'admin.invalid_form' => 'Invalid form submission. Go back, reload the page, and try again.',
 
@@ -50,4 +54,20 @@ return [
     'clinic.name_required' => 'Enter the clinic name.',
     'clinic.email_invalid' => 'Enter a valid email address, e.g. info@clinic.com.',
     'clinic.saved' => 'Clinic info saved.',
+
+    // Admin: services
+    'services.title' => 'Services',
+    'services.add_heading' => 'Add a service',
+    'services.edit_heading' => 'Edit service',
+    'services.list_heading' => 'Current services',
+    'services.name' => 'Name',
+    'services.description' => 'Description',
+    'services.add' => 'Add service',
+    'services.empty' => 'No services yet. Add the first one with the form above.',
+    'services.name_required' => 'Enter the service name.',
+    'services.added' => 'Service added.',
+    'services.updated' => 'Service updated.',
+    'services.deleted' => 'Service deleted.',
+    'services.not_found' => 'That service doesn\'t exist or was already deleted.',
+    'services.confirm_delete' => 'Delete the service "{name}"? This can\'t be undone.',
 ];
