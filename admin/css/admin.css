@@ -83,6 +83,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
+input[type="time"],
 textarea,
 select {
     width: 100%;
@@ -360,6 +361,102 @@ h2 {
 .card span {
     color: var(--muted);
     font-size: 0.9rem;
+}
+
+/* Schedules */
+
+.doctor-picker {
+    max-width: 640px;
+    margin-bottom: 1.5rem;
+}
+
+.doctor-picker label {
+    margin-top: 0;
+}
+
+.inline-field {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.inline-field button {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.day {
+    min-width: 0;
+    margin: 0;
+    padding: 0.75rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Floating the legend puts it inside the fieldset like normal content instead of on its border. */
+.day legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+}
+
+.day legend + * {
+    clear: both;
+}
+
+.day-toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0;
+}
+
+.day-toggle input {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.slot {
+    margin-top: 0.5rem;
+}
+
+.slot-times {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.time-field {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.slot-times label {
+    margin: 0;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+.slot-times input[type="time"] {
+    width: auto;
+}
+
+.day [data-add-slot] {
+    margin-top: 0.75rem;
+}
+
+.clear-schedule {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.schedule-summary {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 /* Language switch */
