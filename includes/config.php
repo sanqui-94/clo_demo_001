@@ -28,6 +28,11 @@ define('DOCTOR_PHOTO_PATH_PREFIX', 'images/doctors/');
 // (both are 2 MB by default).
 define('MAX_PHOTO_BYTES', 2 * 1024 * 1024);
 
+// Address of the online appointment system, e.g. 'https://citas.example.com/clinica'.
+// The "Book appointment" button on doctor pages opens it. While empty, the button calls the clinic instead
+// (or emails it if there is no phone number).
+define('BOOKING_URL', getenv('BOOKING_URL') ?: '');
+
 // Admins are logged out after this many seconds without loading a page.
 define('SESSION_TIMEOUT', 30 * 60);
 

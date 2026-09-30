@@ -21,12 +21,24 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
     font-family: var(--font-body);
     font-size: 1.0625rem;
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    display: block;
+    max-width: 100%;
 }
 
 h1,
@@ -330,14 +342,12 @@ a:hover {
 }
 
 .doctor-card-photo {
-    display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
     object-position: center 25%;
 }
 
-/* After the photo rules, so its display: flex wins over their display: block. */
 .photo-placeholder {
     display: flex;
     align-items: center;
@@ -397,6 +407,122 @@ a:hover {
     padding-top: 1rem;
     font-weight: 600;
     color: var(--primary);
+}
+
+/* Doctor page */
+
+.doctor-page {
+    padding-top: 1.5rem;
+    padding-bottom: 4rem;
+}
+
+.back-link {
+    margin: 0 0 1.5rem;
+}
+
+.doctor-profile {
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    gap: 2.5rem 3rem;
+    align-items: start;
+}
+
+.doctor-profile-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+.doctor-profile-photo.photo-placeholder {
+    font-size: 5rem;
+}
+
+.doctor-profile h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.doctor-profile .doctor-title {
+    font-size: 1.15rem;
+}
+
+.doctor-bio {
+    max-width: 62ch;
+    margin-top: 1.25rem;
+}
+
+.doctor-bio p {
+    margin: 0 0 1rem;
+}
+
+.schedule-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.schedule-card h2 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 0.6rem 0;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid var(--border);
+}
+
+.schedule-table tr:first-child th,
+.schedule-table tr:first-child td {
+    border-top: none;
+}
+
+.schedule-table th {
+    width: 1%;
+    padding-right: 2rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.schedule-slot {
+    display: block;
+}
+
+.schedule-empty {
+    margin: 0;
+}
+
+.schedule-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 760px) {
+    .doctor-profile {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .doctor-profile-photo {
+        max-width: 320px;
+    }
+
+    .doctor-profile-photo.photo-placeholder {
+        max-width: 140px;
+        font-size: 3rem;
+    }
 }
 
 /* Footer */

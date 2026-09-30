@@ -48,3 +48,31 @@ function format_slots(array $slots): string
 
     return implode(', ', $ranges);
 }
+
+/**
+ * Merges consecutive days that have exactly the same slots, so Monday to Friday 9:00–17:00 shows as one line.
+ * $schedule is doctor_schedule()'s result. Returns [['from' => 1, 'to' => 5, 'slots' => [...]], ...].
+ */
+function group_schedule_days(array $schedule): array
+{
+    $groups = [];
+
+    foreach ($schedule as $day => $slots) {
+        $last = array_key_last($groups);
+        if ($last !== null && $groups[$last]['to'] === $day - 1 && $groups[$last]['slots'] === $slots) {
+            $groups[$last]['to'] = $day;
+        } else {
+            $groups[] = ['from' => $day, 'to' => $day, 'slots' => $slots];
+        }
+    }
+
+    return $groups;
+}
+
+/**
+ * A group's days as text, e.g. 'Lunes' or 'Lunes – Viernes'.
+ */
+function format_day_range(int $from, int $to): string
+{
+    return $from === $to ? t("days.$from") : t("days.$from") . ' – ' . t("days.$to");
+}
