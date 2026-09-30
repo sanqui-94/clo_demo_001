@@ -20,6 +20,14 @@ define('DB_PATH', getenv('DB_PATH') ?: __DIR__ . '/../database/clinic.sqlite');
 // Its password is generated randomly and printed once when init.php runs.
 define('DEFAULT_ADMIN_USERNAME', 'admin');
 
+// Doctor photos are saved in public/images/doctors/. The database stores their path relative to public/.
+define('DOCTOR_PHOTO_DIR', __DIR__ . '/../public/images/doctors');
+define('DOCTOR_PHOTO_PATH_PREFIX', 'images/doctors/');
+
+// Largest photo accepted. PHP's own upload_max_filesize and post_max_size must be at least this big
+// (both are 2 MB by default).
+define('MAX_PHOTO_BYTES', 2 * 1024 * 1024);
+
 // Admins are logged out after this many seconds without loading a page.
 define('SESSION_TIMEOUT', 30 * 60);
 
