@@ -38,6 +38,32 @@ function phone_href(string $phone): string
 }
 
 /**
+ * Initials of the first two words of a doctor's name, skipping titles like "Dr." or "Dra.".
+ * First two rather than first and last because Spanish names usually end in two surnames:
+ * "Dra. Ana García López" -> "AG".
+ */
+function doctor_initials(string $name): string
+{
+    $words = array_filter(preg_split('/\s+/u', trim($name)), fn(string $word) => !str_ends_with($word, '.'));
+    $initials = array_map(fn(string $word) => mb_substr($word, 0, 1), array_slice(array_values($words), 0, 2));
+
+    return mb_strtoupper(implode('', $initials));
+}
+
+/**
+ * The doctor's photo, or a block with their initials if they have none.
+ * The alt text is empty because the doctor's name is always shown next to it.
+ */
+function doctor_photo(array $doctor, string $class): string
+{
+    if (!empty($doctor['photo_path'])) {
+        return '<img class="' . e($class) . '" src="' . e($doctor['photo_path']) . '" alt="">';
+    }
+
+    return '<span class="' . e($class) . ' photo-placeholder" aria-hidden="true">' . e(doctor_initials($doctor['name'])) . '</span>';
+}
+
+/**
  * $title is the page's own name ('' on the homepage, which uses the clinic name alone).
  * $current is the nav item to mark as the current page: 'home' or 'staff'.
  */
