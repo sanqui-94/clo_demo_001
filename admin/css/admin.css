@@ -235,6 +235,49 @@ h2 {
     display: inline;
 }
 
+.data-table .is-inactive td {
+    color: var(--muted);
+}
+
+.thumb {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.thumb-empty {
+    background: var(--border);
+}
+
+.photo-preview {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 0.5rem;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.badge-active {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.badge-inactive {
+    background: var(--border);
+    color: var(--muted);
+}
+
 .button-link.danger {
     color: var(--error-text);
 }

@@ -60,7 +60,7 @@ Always include `router.php`. It makes the built-in server behave like the produc
 2. Create the database, using **one** of these:
    - **With SSH** (available on most Hostinger web hosting plans): connect, `cd` into the project folder, and run `php database/init.php`. Save the printed password.
    - **Without SSH:** run `php database/init.php` on your own computer, save the printed password, then upload `database/clinic.sqlite` into the `database/` folder on the server.
-3. Make sure the web server can write to the `database/` folder (permissions `755`), not just the `.sqlite` file. SQLite creates temporary files next to the database while saving changes.
+3. Make sure the web server can write to the `database/` folder (permissions `755`), not just the `.sqlite` file. SQLite creates temporary files next to the database while saving changes. Doctor photos are saved in `public/images/doctors/`, so that folder must be writable too.
 4. Check the private folders are blocked: open `https://your-site/database/clinic.sqlite` and `https://your-site/includes/config.php`. Both must return **403 Forbidden**, not a download or a page.
 
 `includes/` and `database/` must never be reachable from the web. Each has an `.htaccess` that denies access. If the host allows it, keep the project outside `public_html` and serve only `public/` and `admin/`.
@@ -88,13 +88,13 @@ The default language is `DEFAULT_LANG` in `includes/config.php`.
 |---|---|
 | `public/` | Public pages, `css/`, and uploaded doctor photos in `images/doctors/` |
 | `admin/` | Admin panel pages and `css/` |
-| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php`, `i18n.php` and `lang/` (translations) |
+| `includes/` | Shared PHP: `config.php`, `db.php`, `functions.php`, `auth.php` (login, sessions, CSRF), `admin_layout.php`, `photos.php` (doctor photo uploads), `i18n.php` and `lang/` (translations) |
 | `database/` | `schema.sql`, `init.php`, and the SQLite file (not committed) |
 | `router.php` | Local development router for `php -S` (not used in production) |
 
 ## Configuration
 
-Settings live in `includes/config.php`: app name, timezone, database path, the admin username used by `init.php`, and `SESSION_TIMEOUT` (admins are logged out after 30 minutes of inactivity).
+Settings live in `includes/config.php`: app name, timezone, database path, the admin username used by `init.php`, `SESSION_TIMEOUT` (admins are logged out after 30 minutes of inactivity), and `MAX_PHOTO_BYTES` (largest doctor photo accepted, 2 MB). To raise the photo limit, PHP's `upload_max_filesize` and `post_max_size` must be raised too (on Hostinger: hPanel → PHP Configuration).
 
 Environment variables:
 
