@@ -1,0 +1,19 @@
+# Web server rules for production (Apache/LiteSpeed, as on Hostinger).
+# Locally, php -S ignores this file; router.php does the equivalent job there.
+
+# Hides PHP errors from visitors: includes/config.php reads APP_ENV.
+SetEnv APP_ENV production
+
+# No folder listings, e.g. of public/images/doctors/.
+Options -Indexes
+
+RewriteEngine On
+
+# The site's homepage is public/, so the bare domain goes there.
+# Built from REQUEST_URI because a relative target would make Apache redirect to the file-system path.
+# 302 rather than 301 so browsers don't cache it forever if the layout changes.
+RewriteRule ^$ %{REQUEST_URI}public/ [R=302,L]
+
+# Files that aren't part of the website: git data (when deployed with git), docs, the local dev router.
+RewriteRule (^|/)\.git(/|$) - [R=404,L]
+RewriteRule ^(README\.md|router\.php)$ - [R=404,L]
