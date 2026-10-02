@@ -13,6 +13,30 @@ function find_doctor(int $id): ?array
     return $stmt->fetch() ?: null;
 }
 
+/**
+ * Ids of the specialties linked to a doctor.
+ */
+function doctor_specialty_ids(int $doctorId): array
+{
+    $stmt = db()->prepare('SELECT specialty_id FROM doctor_specialties WHERE doctor_id = ?');
+    $stmt->execute([$doctorId]);
+
+    return array_map('intval', $stmt->fetchAll(PDO::FETCH_COLUMN));
+}
+
+/**
+ * Replaces all of a doctor's specialty links with $specialtyIds.
+ */
+function save_doctor_specialties(int $doctorId, array $specialtyIds): void
+{
+    db()->prepare('DELETE FROM doctor_specialties WHERE doctor_id = ?')->execute([$doctorId]);
+
+    $stmt = db()->prepare('INSERT INTO doctor_specialties (doctor_id, specialty_id) VALUES (?, ?)');
+    foreach ($specialtyIds as $specialtyId) {
+        $stmt->execute([$doctorId, $specialtyId]);
+    }
+}
+
 // ?edit=ID shows the edit form for that doctor; otherwise the form adds a new one.
 $editing = null;
 if (isset($_GET['edit'])) {
@@ -34,6 +58,8 @@ $values = [
     'title' => $editing['title'] ?? '',
     'bio'   => $editing['bio'] ?? '',
 ];
+$specialties = db()->query('SELECT id, name FROM specialties ORDER BY name COLLATE NOCASE')->fetchAll();
+$selectedSpecialties = $editing ? doctor_specialty_ids((int) $editing['id']) : [];
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -67,6 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['name'] = t('doctors.name_required');
         }
 
+        // Ignores ids that aren't real specialties, e.g. one deleted while this form was open.
+        $selectedSpecialties = array_values(array_intersect(
+            array_column($specialties, 'id'),
+            array_map('intval', (array) ($_POST['specialties'] ?? []))
+        ));
+
         $photo = $_FILES['photo'] ?? null;
         $hasPhoto = $photo && $photo['error'] !== UPLOAD_ERR_NO_FILE;
         if ($hasPhoto && ($photoError = photo_upload_error($photo))) {
@@ -90,20 +122,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$errors) {
             $params = [$values['name'], $values['title'] ?: null, $values['bio'] ?: null, $photoPath];
 
+            db()->beginTransaction();
             if ($existing) {
                 $stmt = db()->prepare(
                     'UPDATE doctors SET name = ?, title = ?, bio = ?, photo_path = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?'
                 );
                 $stmt->execute([...$params, $id]);
+            } else {
+                $stmt = db()->prepare('INSERT INTO doctors (name, title, bio, photo_path) VALUES (?, ?, ?, ?)');
+                $stmt->execute($params);
+                $id = (int) db()->lastInsertId();
+            }
+            save_doctor_specialties($id, $selectedSpecialties);
+            db()->commit();
 
+            if ($existing) {
                 // The old photo is only removed once the new one is saved and recorded.
                 if ($photoPath !== $existing['photo_path']) {
                     delete_photo($existing['photo_path']);
                 }
                 flash('success', t('doctors.updated'));
             } else {
-                $stmt = db()->prepare('INSERT INTO doctors (name, title, bio, photo_path) VALUES (?, ?, ?, ?)');
-                $stmt->execute($params);
                 flash('success', t('doctors.added'));
             }
 
@@ -112,8 +151,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// The ', ' separator lists each doctor's specialties in one column.
 $doctors = db()->query(
-    'SELECT id, name, title, photo_path, is_active FROM doctors ORDER BY is_active DESC, name COLLATE NOCASE'
+    "SELECT d.id, d.name, d.title, d.photo_path, d.is_active,
+            (SELECT GROUP_CONCAT(name, ', ') FROM (
+                SELECT s.name FROM doctor_specialties ds
+                JOIN specialties s ON s.id = ds.specialty_id
+                WHERE ds.doctor_id = d.id
+                ORDER BY s.name COLLATE NOCASE
+            )) AS specialty_names
+     FROM doctors d
+     ORDER BY d.is_active DESC, d.name COLLATE NOCASE"
 )->fetchAll();
 
 admin_header(t('doctors.title'));
@@ -138,6 +186,20 @@ admin_header(t('doctors.title'));
 
                 <label for="title"><?= e(t('doctors.doctor_title')) ?></label>
                 <input type="text" id="title" name="title" value="<?= e($values['title']) ?>" placeholder="<?= e(t('doctors.title_placeholder')) ?>">
+
+                <fieldset class="checkbox-group">
+                    <legend><?= e(t('doctors.specialties')) ?></legend>
+<?php if ($specialties): ?>
+<?php foreach ($specialties as $specialty): ?>
+                    <label class="checkbox">
+                        <input type="checkbox" name="specialties[]" value="<?= (int) $specialty['id'] ?>"<?= in_array($specialty['id'], $selectedSpecialties, true) ? ' checked' : '' ?>>
+                        <?= e($specialty['name']) ?>
+                    </label>
+<?php endforeach; ?>
+<?php else: ?>
+                    <p class="form-hint"><?= e(t('doctors.no_specialties')) ?> <a href="specialties.php"><?= e(t('doctors.go_to_specialties')) ?></a></p>
+<?php endif; ?>
+                </fieldset>
 
                 <label for="bio"><?= e(t('doctors.bio')) ?></label>
                 <textarea id="bio" name="bio" rows="6"><?= e($values['bio']) ?></textarea>
@@ -181,6 +243,7 @@ admin_header(t('doctors.title'));
                     <th scope="col"><span class="visually-hidden"><?= e(t('doctors.photo')) ?></span></th>
                     <th scope="col"><?= e(t('doctors.name')) ?></th>
                     <th scope="col"><?= e(t('doctors.doctor_title')) ?></th>
+                    <th scope="col"><?= e(t('doctors.specialties')) ?></th>
                     <th scope="col"><?= e(t('doctors.status')) ?></th>
                     <th scope="col"><span class="visually-hidden"><?= e(t('admin.actions')) ?></span></th>
                 </tr>
@@ -197,6 +260,7 @@ admin_header(t('doctors.title'));
                     </td>
                     <td><?= e($doctor['name']) ?></td>
                     <td class="muted"><?= e($doctor['title']) ?></td>
+                    <td class="muted"><?= e($doctor['specialty_names']) ?></td>
                     <td>
                         <span class="badge <?= $doctor['is_active'] ? 'badge-active' : 'badge-inactive' ?>">
                             <?= e(t($doctor['is_active'] ? 'doctors.active' : 'doctors.inactive')) ?>

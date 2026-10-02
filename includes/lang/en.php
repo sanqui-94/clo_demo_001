@@ -37,6 +37,8 @@ return [
     'dashboard.clinic_desc' => 'Name, description, and contact details.',
     'dashboard.services' => 'Services',
     'dashboard.services_desc' => 'Add, edit, and remove the services offered.',
+    'dashboard.specialties' => 'Specialties',
+    'dashboard.specialties_desc' => 'Add, edit, and remove medical specialties.',
     'dashboard.doctors' => 'Doctors',
     'dashboard.doctors_desc' => 'Manage doctor profiles and photos.',
     'dashboard.schedules' => 'Schedules',
@@ -71,14 +73,37 @@ return [
     'services.not_found' => 'That service doesn\'t exist or was already deleted.',
     'services.confirm_delete' => 'Delete the service "{name}"? This can\'t be undone.',
 
+    // Admin: specialties
+    'specialties.title' => 'Specialties',
+    'specialties.add_heading' => 'Add a specialty',
+    'specialties.edit_heading' => 'Edit specialty',
+    'specialties.list_heading' => 'Current specialties',
+    'specialties.name' => 'Name',
+    'specialties.name_placeholder' => 'e.g. Pediatrics',
+    'specialties.description' => 'Description',
+    'specialties.doctors' => 'Doctors',
+    'specialties.add' => 'Add specialty',
+    'specialties.assign_hint' => 'To assign doctors to a specialty, edit each doctor on the Doctors page.',
+    'specialties.empty' => 'No specialties yet. Add the first one with the form above.',
+    'specialties.name_required' => 'Enter the specialty\'s name.',
+    'specialties.name_taken' => 'A specialty with that name already exists.',
+    'specialties.added' => 'Specialty added.',
+    'specialties.updated' => 'Specialty updated.',
+    'specialties.deleted' => 'Specialty deleted.',
+    'specialties.not_found' => 'That specialty doesn\'t exist or was already deleted.',
+    'specialties.confirm_delete' => 'Delete the specialty "{name}"? Its doctors are not deleted, only unassigned from it. This can\'t be undone.',
+
     // Admin: doctors
     'doctors.title' => 'Doctors',
     'doctors.add_heading' => 'Add a doctor',
     'doctors.edit_heading' => 'Edit doctor',
     'doctors.list_heading' => 'Medical team',
     'doctors.name' => 'Name',
-    'doctors.doctor_title' => 'Title or specialty',
-    'doctors.title_placeholder' => 'e.g. Pediatrician',
+    'doctors.doctor_title' => 'Title',
+    'doctors.title_placeholder' => 'e.g. Pediatrician, Head of department',
+    'doctors.specialties' => 'Specialties',
+    'doctors.no_specialties' => 'No specialties yet.',
+    'doctors.go_to_specialties' => 'Add specialties',
     'doctors.bio' => 'Bio',
     'doctors.photo' => 'Photo',
     'doctors.current_photo' => 'Current photo',
@@ -173,6 +198,7 @@ return [
     'site.new_tab' => '(opens in a new tab)',
     'site.copyright' => '© {year} {name}',
     'nav.home' => 'Home',
+    'nav.specialties' => 'Specialties',
     'nav.staff' => 'Our doctors',
 
     // Public site: homepage
@@ -186,6 +212,13 @@ return [
     'home.email' => 'Email',
     'home.address' => 'Address',
     'home.directions' => 'Get directions',
+
+    // Public site: specialties
+    'specialties_page.title' => 'Specialties',
+    'specialties_page.intro' => 'The specialties we cover and the doctors in each one.',
+    'specialties_page.meta_description' => 'Medical specialties at {name} and the doctors who practice each one.',
+    'specialties_page.empty' => 'Our specialties will be listed here soon.',
+    'specialties_page.no_doctors' => 'Contact the clinic to ask about availability for this specialty.',
 
     // Public site: staff
     'staff.title' => 'Our doctors',

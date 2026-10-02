@@ -1,6 +1,6 @@
 # Clinic Demo
 
-A small PHP + SQLite website for a clinic: a public site (clinic info, services, doctors and their schedules) and an admin panel to manage that content.
+A small PHP + SQLite website for a clinic: a public site (clinic info, services, specialties, doctors and their schedules) and an admin panel to manage that content.
 
 ## Requirements
 
@@ -26,6 +26,8 @@ Save this password now; it will not be shown again.
 The password is random and only ever shown here. Save it in a password manager. You can change it later from the admin settings page.
 
 Running the script again is safe: it won't touch existing tables, data, or the admin user. It only runs from the command line; opening it in a browser returns 403.
+
+Run it again after pulling changes that add tables to `schema.sql`, e.g. specialties (`specialties`, `doctor_specialties`). It adds the missing tables and leaves existing data alone. This applies to the live site too.
 
 ### Lost the admin password
 

@@ -409,6 +409,90 @@ a:hover {
     color: var(--primary);
 }
 
+/* Specialties */
+
+.specialty {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 1rem;
+}
+
+.specialty:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.specialty h2 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+}
+
+.specialty-description {
+    max-width: 62ch;
+    color: var(--muted);
+}
+
+.specialty-description p {
+    margin: 0 0 0.75rem;
+}
+
+.specialty > .muted {
+    margin: 0;
+}
+
+.specialty-doctors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.specialty-doctor {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 100%;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.specialty-doctor:hover {
+    color: var(--text);
+    border-color: var(--primary);
+    box-shadow: 0 6px 20px rgb(20 74 80 / 0.12);
+}
+
+.specialty-doctor-photo {
+    flex: none;
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 50%;
+}
+
+.specialty-doctor-photo.photo-placeholder {
+    font-size: 1.2rem;
+}
+
+.specialty-doctor strong {
+    display: block;
+    line-height: 1.3;
+}
+
+.specialty-doctor .doctor-title {
+    display: block;
+    margin: 0.1rem 0 0;
+    font-size: 0.95rem;
+}
+
 /* Doctor page */
 
 .doctor-page {

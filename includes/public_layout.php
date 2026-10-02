@@ -65,14 +65,15 @@ function doctor_photo(array $doctor, string $class): string
 
 /**
  * $title is the page's own name ('' on the homepage, which uses the clinic name alone).
- * $current is the nav item to mark as the current page: 'home' or 'staff'.
+ * $current is the nav item to mark as the current page: 'home', 'specialties' or 'staff'.
  */
 function public_header(string $title, string $description, string $current = ''): void
 {
     $fullTitle = $title === '' ? clinic_name() : $title . ' · ' . clinic_name();
     $navItems = [
-        'home'  => ['index.php', t('nav.home')],
-        'staff' => ['staff.php', t('nav.staff')],
+        'home'        => ['index.php', t('nav.home')],
+        'specialties' => ['specialties.php', t('nav.specialties')],
+        'staff'       => ['staff.php', t('nav.staff')],
     ];
     ?>
 <!DOCTYPE html>
