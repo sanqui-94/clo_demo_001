@@ -37,6 +37,8 @@ return [
     'dashboard.clinic_desc' => 'Nombre, descripción y datos de contacto.',
     'dashboard.services' => 'Servicios',
     'dashboard.services_desc' => 'Añade, edita y elimina los servicios que se ofrecen.',
+    'dashboard.specialties' => 'Especialidades',
+    'dashboard.specialties_desc' => 'Añade, edita y elimina las especialidades médicas.',
     'dashboard.doctors' => 'Médicos',
     'dashboard.doctors_desc' => 'Gestiona los perfiles y fotos de los médicos.',
     'dashboard.schedules' => 'Horarios',
@@ -71,14 +73,37 @@ return [
     'services.not_found' => 'Ese servicio no existe o ya se ha eliminado.',
     'services.confirm_delete' => '¿Eliminar el servicio «{name}»? No se puede deshacer.',
 
+    // Admin: specialties
+    'specialties.title' => 'Especialidades',
+    'specialties.add_heading' => 'Añadir especialidad',
+    'specialties.edit_heading' => 'Editar especialidad',
+    'specialties.list_heading' => 'Especialidades actuales',
+    'specialties.name' => 'Nombre',
+    'specialties.name_placeholder' => 'p. ej. Pediatría',
+    'specialties.description' => 'Descripción',
+    'specialties.doctors' => 'Médicos',
+    'specialties.add' => 'Añadir especialidad',
+    'specialties.assign_hint' => 'Para asignar médicos a una especialidad, edita cada médico en la página Médicos.',
+    'specialties.empty' => 'Todavía no hay especialidades. Añade la primera con el formulario de arriba.',
+    'specialties.name_required' => 'Introduce el nombre de la especialidad.',
+    'specialties.name_taken' => 'Ya existe una especialidad con ese nombre.',
+    'specialties.added' => 'Especialidad añadida.',
+    'specialties.updated' => 'Especialidad actualizada.',
+    'specialties.deleted' => 'Especialidad eliminada.',
+    'specialties.not_found' => 'Esa especialidad no existe o ya se ha eliminado.',
+    'specialties.confirm_delete' => '¿Eliminar la especialidad «{name}»? Los médicos no se borran, solo dejan de estar asignados a ella. No se puede deshacer.',
+
     // Admin: doctors
     'doctors.title' => 'Médicos',
     'doctors.add_heading' => 'Añadir médico',
     'doctors.edit_heading' => 'Editar médico',
     'doctors.list_heading' => 'Equipo médico',
     'doctors.name' => 'Nombre',
-    'doctors.doctor_title' => 'Cargo o especialidad',
-    'doctors.title_placeholder' => 'p. ej. Pediatra',
+    'doctors.doctor_title' => 'Cargo',
+    'doctors.title_placeholder' => 'p. ej. Pediatra, Jefa de servicio',
+    'doctors.specialties' => 'Especialidades',
+    'doctors.no_specialties' => 'Todavía no hay especialidades.',
+    'doctors.go_to_specialties' => 'Añadir especialidades',
     'doctors.bio' => 'Biografía',
     'doctors.photo' => 'Foto',
     'doctors.current_photo' => 'Foto actual',
@@ -173,6 +198,7 @@ return [
     'site.new_tab' => '(se abre en una pestaña nueva)',
     'site.copyright' => '© {year} {name}',
     'nav.home' => 'Inicio',
+    'nav.specialties' => 'Especialidades',
     'nav.staff' => 'Equipo médico',
 
     // Public site: homepage
@@ -186,6 +212,13 @@ return [
     'home.email' => 'Correo electrónico',
     'home.address' => 'Dirección',
     'home.directions' => 'Cómo llegar',
+
+    // Public site: specialties
+    'specialties_page.title' => 'Especialidades',
+    'specialties_page.intro' => 'Estas son las especialidades que atendemos y los médicos de cada una.',
+    'specialties_page.meta_description' => 'Especialidades médicas de {name} y los médicos que atienden cada una.',
+    'specialties_page.empty' => 'Pronto publicaremos aquí nuestras especialidades.',
+    'specialties_page.no_doctors' => 'Consulta con la clínica la disponibilidad de esta especialidad.',
 
     // Public site: staff
     'staff.title' => 'Equipo médico',

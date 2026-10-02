@@ -45,6 +45,25 @@ CREATE TABLE IF NOT EXISTS doctor_schedules (
 CREATE INDEX IF NOT EXISTS idx_doctor_schedules_doctor
     ON doctor_schedules (doctor_id, day_of_week);
 
+CREATE TABLE IF NOT EXISTS specialties (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    name        TEXT NOT NULL UNIQUE COLLATE NOCASE,
+    description TEXT,
+    created_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- A doctor can have several specialties, and a specialty several doctors.
+-- Deleting either side removes the link, never the other record.
+CREATE TABLE IF NOT EXISTS doctor_specialties (
+    doctor_id    INTEGER NOT NULL REFERENCES doctors(id) ON DELETE CASCADE,
+    specialty_id INTEGER NOT NULL REFERENCES specialties(id) ON DELETE CASCADE,
+    PRIMARY KEY (doctor_id, specialty_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_doctor_specialties_specialty
+    ON doctor_specialties (specialty_id);
+
 CREATE TABLE IF NOT EXISTS admin_users (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,
     username      TEXT NOT NULL UNIQUE,

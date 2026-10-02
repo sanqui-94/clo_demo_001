@@ -172,6 +172,35 @@ textarea {
     margin: 1rem 0 0;
 }
 
+.checkbox-group {
+    margin: 1rem 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.checkbox-group legend {
+    margin-bottom: 0.25rem;
+    padding: 0;
+    font-weight: 600;
+}
+
+.checkbox {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0.25rem 0;
+    font-weight: 400;
+}
+
+.checkbox input {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.checkbox-group .form-hint {
+    margin-top: 0.25rem;
+}
+
 .form-actions {
     display: flex;
     gap: 1rem;
